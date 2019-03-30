@@ -1,6 +1,6 @@
 import pandas
 import random
-import time
+import time 
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -9,6 +9,7 @@ from email.mime.multipart import MIMEMultipart
 password = input("Type your password and press enter:")
 sender_email = "inputyourgmailhere@gmail.com"  
 
+#reading excel file
 df = pandas.read_excel('D:\workspace Python\Emails\march.xlsx')
 emails = df['emails'].values
 
