@@ -15,7 +15,10 @@ emails = df['emails'].values
 
 
 message = MIMEMultipart("alternative")
-message["From"] = "Customer Support"   
+message["From"] = "Customer Support" 
+message["Subject"] = "🎁Find your discount at Marvelous-Essays💕" 
+
+
 
 html = """
 <p style="text-align: center;"><strong><span style="font-size: 14.0pt; font-family: 'Century Gothic','sans-serif'; color: #222222;">Dear&nbsp;Customer,</span></strong></p>
@@ -31,12 +34,13 @@ part1 = MIMEText(html, "html")
 message.attach(part1)
 
 
-
 for i in range (len(emails)):
     wait_time = random.randint(145,160) 
-    print(i, wait_time, emails[i])
-    
-   
+
+    print(i, wait_time, emails[i]) 
+        
+
+
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, password)        
@@ -45,3 +49,4 @@ for i in range (len(emails)):
     time.sleep (wait_time) 
 
 print('DONE')
+
