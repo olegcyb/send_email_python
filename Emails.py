@@ -16,7 +16,6 @@ emails = df['emails'].values
 
 message = MIMEMultipart("alternative")
 message["From"] = "Customer Support"   
-#message["Subject"] = "🎁Find your discount at " + sites[0]
 message["Subject"] = "🎁Find your discount at Marvelous-Essays💕" 
 
 
@@ -41,18 +40,11 @@ for i in range (len(emails)):
     #message["To"] = receiver_email     
     wait_time = random.randint(145,160) 
     print(i, wait_time, emails[i]) 
-    #message["Subject"] = "🎁Find your discount at " + sites[i]
-    
-   
-    
-    
+        
 
-    # Create secure connection with server and send email
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, password)        
         server.sendmail(sender_email, emails[i], message.as_string())
         
     time.sleep (wait_time) 
-
-print('DONE')
