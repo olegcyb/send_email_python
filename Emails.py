@@ -7,18 +7,14 @@ from email.mime.multipart import MIMEMultipart
 
 
 password = input("Type your password and press enter:")
-sender_email = "promo.writing.service@gmail.com"  
+sender_email = "inputyourgmailhere@gmail.com"  
 
 df = pandas.read_excel('D:\workspace Python\Emails\march.xlsx')
 emails = df['emails'].values
-#sites = df['site'].values
 
 
 message = MIMEMultipart("alternative")
 message["From"] = "Customer Support"   
-#message["Subject"] = "🎁Find your discount at " + sites[0]
-message["Subject"] = "🎁Find your discount at Marvelous-Essays💕" 
-
 
 html = """
 <p style="text-align: center;"><strong><span style="font-size: 14.0pt; font-family: 'Century Gothic','sans-serif'; color: #222222;">Dear&nbsp;Customer,</span></strong></p>
@@ -36,18 +32,10 @@ message.attach(part1)
 
 
 for i in range (len(emails)):
-    #message["To"] = emails[i]    
-    #receiver_email = emails[i]      
-    #message["To"] = receiver_email     
     wait_time = random.randint(145,160) 
-    print(i, wait_time, emails[i]) 
-    #message["Subject"] = "🎁Find your discount at " + sites[i]
+    print(i, wait_time, emails[i])
     
    
-    
-    
-
-    # Create secure connection with server and send email
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, password)        
