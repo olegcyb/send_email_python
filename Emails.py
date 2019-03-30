@@ -1,22 +1,23 @@
 import pandas
 import random
-import time
+import time 
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
 password = input("Type your password and press enter:")
-sender_email = "promo.writing.service@gmail.com"  
+sender_email = "inputyourgmailhere@gmail.com"  
 
+#reading excel file
 df = pandas.read_excel('D:\workspace Python\Emails\march.xlsx')
 emails = df['emails'].values
-#sites = df['site'].values
 
 
 message = MIMEMultipart("alternative")
-message["From"] = "Customer Support"   
+message["From"] = "Customer Support" 
 message["Subject"] = "🎁Find your discount at Marvelous-Essays💕" 
+
 
 
 html = """
@@ -33,14 +34,12 @@ part1 = MIMEText(html, "html")
 message.attach(part1)
 
 
-
 for i in range (len(emails)):
-    #message["To"] = emails[i]    
-    #receiver_email = emails[i]      
-    #message["To"] = receiver_email     
     wait_time = random.randint(145,160) 
+
     print(i, wait_time, emails[i]) 
         
+
 
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
@@ -48,3 +47,6 @@ for i in range (len(emails)):
         server.sendmail(sender_email, emails[i], message.as_string())
         
     time.sleep (wait_time) 
+
+print('DONE')
+
