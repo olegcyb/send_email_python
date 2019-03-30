@@ -5,7 +5,7 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-
+#TODO
 password = input("Type your password and press enter:")
 sender_email = "inputyourgmailhere@gmail.com"  
 
